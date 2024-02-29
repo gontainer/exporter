@@ -1,0 +1,26 @@
+run:
+  timeout: 5m
+
+issues:
+  exclude-rules:
+    - path: exporters_test.go
+      text: "File is not `gofumpt`-ed"
+    - path: exporters_test.go
+      text: "File is not `gofmt`-ed with `-s`"
+
+linters:
+  enable-all: true
+  disable:
+    - funlen
+    - varnamelen
+    - interfacer
+    - golint
+    - structcheck
+    - maligned
+    - deadcode
+    - exhaustivestruct
+    - nosnakecase
+    - ifshort
+    - scopelint
+    - varcheck
+    - depguard
