@@ -3,9 +3,9 @@ run:
 
 issues:
   exclude-rules:
-    - path: exporters_test.go
+    - path: exporters_ignore_gofmt_test.go
       text: "File is not `gofumpt`-ed"
-    - path: exporters_test.go
+    - path: exporters_ignore_gofmt_test.go
       text: "File is not `gofmt`-ed with `-s`"
 
 linters:

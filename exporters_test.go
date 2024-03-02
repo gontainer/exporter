@@ -29,12 +29,14 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-type myString string
-type aliasString = string
-type myInt int
-type aliasInt = int
-type myBool bool
-type aliasBool = bool
+type (
+	myString    string
+	aliasString = string
+	myInt       int
+	aliasInt    = int
+	myBool      bool
+	aliasBool   = bool
+)
 
 //nolint:testifylint
 func TestChainExporter_Export(t *testing.T) {
@@ -113,10 +115,6 @@ func TestChainExporter_Export(t *testing.T) {
 				input:  [][2][][]int{{{{1, 2}}, nil}},
 				output: `[][2][][]int{[2][][]int{[][]int{[]int{int(1), int(2)}}, ([][]int)(nil)}}`,
 			},
-			`[][2][][]int{{{{1, 2}}, nil}} #2`: {
-				input:  [][2][][]int{[2][][]int{[][]int{[]int{int(1), int(2)}}, ([][]int)(nil)}},
-				output: `[][2][][]int{[2][][]int{[][]int{[]int{int(1), int(2)}}, ([][]int)(nil)}}`,
-			},
 			`[][]any{nil, nil, {(*int)(nil)}}`: {
 				input: [][]any{nil, nil, {(*int)(nil)}},
 				error: `cannot export ([][]interface{})[2]: cannot export ([]interface{})[0]: type *int is not supported`,
@@ -135,10 +133,6 @@ func TestChainExporter_Export(t *testing.T) {
 			},
 			`[]any{[][]int{{1, 2}, {3, 4}}, ([][][]any)(nil)}`: {
 				input:  []any{[][]int{{1, 2}, {3, 4}}, ([][][]any)(nil)},
-				output: `[]interface{}{[][]int{[]int{int(1), int(2)}, []int{int(3), int(4)}}, ([][][]interface{})(nil)}`,
-			},
-			`[]any{[][]int{{1, 2}, {3, 4}}, ([][][]any)(nil)} #2`: {
-				input:  []interface{}{[][]int{[]int{int(1), int(2)}, []int{int(3), int(4)}}, ([][][]interface{})(nil)},
 				output: `[]interface{}{[][]int{[]int{int(1), int(2)}, []int{int(3), int(4)}}, ([][][]interface{})(nil)}`,
 			},
 		}
