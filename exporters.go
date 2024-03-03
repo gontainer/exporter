@@ -65,6 +65,8 @@ func Export(i any) (string, error) {
 }
 
 // MustExport exports input value to a GO code.
+//
+// See Export.
 func MustExport(i any) string {
 	r, err := Export(i)
 	if err != nil {
@@ -88,6 +90,7 @@ func CastToString(i any) (string, error) {
 }
 
 // MustCastToString casts input value to a string.
+//
 // See CastToString.
 func MustCastToString(i any) string {
 	r, err := CastToString(i)
