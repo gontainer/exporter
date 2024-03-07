@@ -7,7 +7,7 @@
 # Exporter
 
 This package provides sets of functions to export variables to a GO code.
-<br/>This package has been extracted from [github.com/gontainer/gontainer-helpers](https://github.com/gontainer/gontainer-helpers).
+<br/>It has been extracted from [github.com/gontainer/gontainer-helpers](https://github.com/gontainer/gontainer-helpers).
 
 ```go
 s, _ := exporter.Export([3]any{nil, 1.5, "hello world"})
